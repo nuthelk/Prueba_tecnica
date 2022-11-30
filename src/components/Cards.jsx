@@ -2,7 +2,7 @@ import React from 'react'
 
 const Cards = ({name, gender, location, city, state, country, postcode,coordinates,timezone,email,login,dob,registered, phone,cell,id,picture,info,nat}) => {
   return (
-    <div>
+    <div className='shadow-md p-4 flex flex-col items-center bg-slate-100'>
         <img src={picture} alt="" />
         <h1>Name: {name} </h1>
         <p>Gender: {gender} </p>

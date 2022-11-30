@@ -1,8 +1,8 @@
 import React from 'react'
 
 const Cardfav = ({name, gender,  city,  country,email,cell,id,picture,info,nat, borrar, idx}) => {
-  return (
-    <div className='mb-4' id={idx}>
+  return ( 
+    <div className='mb-4 shadow-md p-4 flex flex-col items-center bg-slate-100' id={idx}>
         <img src={picture} alt="" />
         <h1>Name: {name} </h1>
         <p>Gender: {gender} </p>

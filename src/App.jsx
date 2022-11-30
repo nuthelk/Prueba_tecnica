@@ -61,14 +61,18 @@ function App() {
     setIndice(indice+1) 
     handleGenerar()
     setArray([...array, objeto])
-    console.log(array)
-    sessionStorage.setItem('favoritos', JSON.stringify(array))
+
+    session()
     
+  }
+
+  const session = () =>{
+    sessionStorage.setItem('favoritos', JSON.stringify(array))
   }
 
   return (
     <div className='p-4'>
-      <div className='flex justify-between'>
+      <div className='flex justify-around '>
         <div>
           <button className='bg-blue-400 rounded-md p-2 ml-4 mt-4' onClick={handleGenerar}>Generar</button>
           <h1 className='text-4xl font-bold mb-4'>Resultado:</h1>
