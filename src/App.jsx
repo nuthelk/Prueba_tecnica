@@ -7,10 +7,13 @@ import { getData } from './helper/axios'
 function App() {
   const url = "https://randomuser.me/api/"
   const [data, setData] = useState()
+  const favoritos = JSON.parse(sessionStorage.getItem("favoritos"))
   const [bandera, setBandera] = useState(false)
   const [indice, setIndice] = useState(0)
-  const [array, setArray] = useState([])
-  
+  const [array, setArray] = useState(favoritos)
+
+
+
 
   
 
@@ -18,11 +21,18 @@ function App() {
     getData(setData, url)
 
   }, [bandera])
-  console.log(data?.results[0].coordinates)
+
 
 
   const handleGenerar = () => {
     setBandera(!bandera)
+  }
+
+  const borrar = ({target}) =>{
+    const newArray = array.filter(e => e.name != target.id)
+    sessionStorage.setItem('favoritos', JSON.stringify(newArray))
+    setArray(newArray)
+    
   }
 
   const objeto = {
@@ -46,11 +56,14 @@ function App() {
   
 
   const handleFav = () => {
-    sessionStorage.setItem(indice, JSON.stringify(objeto))
-    setIndice(indice+1)
-    setArray([...array, objeto])
+    
+    
+    setIndice(indice+1) 
     handleGenerar()
+    setArray([...array, objeto])
     console.log(array)
+    sessionStorage.setItem('favoritos', JSON.stringify(array))
+    
   }
 
   return (
@@ -90,7 +103,7 @@ function App() {
           {
             array.length > 0 &&
             array.map(e => (
-              <Cardfav key={e.title}
+              <Cardfav key={e.name}
                 name={e.name}
                 gender={e.gender}
                 city={e.city}
@@ -99,6 +112,8 @@ function App() {
                 email={e.email}
                 cell={e.cell}
                 picture={e.picture}
+                borrar = {borrar}
+                idx={e.name}
               />
             ))
           }
