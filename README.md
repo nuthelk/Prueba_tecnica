@@ -2,6 +2,7 @@
 
 - Vite
 - Tailwind
+- Axios
 
 ## Comando para correr el proyecto
 
