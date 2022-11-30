@@ -1,8 +1,8 @@
-Tecnologias utilizadas
+## Tecnologias utilizadas
 
-Vite
-Tailwind
+- Vite
+- Tailwind
 
-Comando para correr el proyecto
+## Comando para correr el proyecto
 
-npm run dev
+- npm run dev
